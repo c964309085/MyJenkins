@@ -1,25 +1,17 @@
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Jenkinsfile (Declarative Pipeline)
 pipeline {
-    agent { docker 'python:3.5.1' }
+    agent any
     stages {
-        stage('build') {
+        stage('Example Build') {
             steps {
-                sh 'python --version'
+                echo 'Hello World'
+            }
+        }
+        stage('Example Deploy') {
+            when {
+                branch 'production'
+            }
+            steps {
+                echo 'Deploying'
             }
         }
     }
